@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fullscreenFragment">
+
+    <fragment
+        android:id="@+id/fullscreenFragment"
+        android:name="com.zlingsmart.mvvmscaffold.ui.splash.SplashFragment"
+        android:label="fragment_fullscreen"
+        tools:layout="@layout/fragment_fullscreen" >
+        <action
+            android:id="@+id/action_fullscreenFragment_to_articlesFragment"
+            app:popUpTo="@id/fullscreenFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/articlesFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/articlesFragment"
+        android:name="com.zlingsmart.mvvmscaffold.ui.article.ArticlesFragment"
+        android:label="fragment_articles"
+        tools:layout="@layout/fragment_articles" />
+
+    <fragment
+        android:id="@+id/webFragment"
+        android:name="com.zlingsmart.mvvmscaffold.ui.web.WebFragment"
+        android:label="WebFragment" />
+
+    <action
+        android:id="@+id/action_to_webFragment"
+        app:destination="@id/webFragment" />
+
+</navigation>
