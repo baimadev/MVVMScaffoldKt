@@ -46,8 +46,8 @@ dialog也提供了基类，需实现dialogSize返回dialog的宽高。其中：
 - 4.使用处@Inject即可
 
 ## MVVM介绍
-本框架是严格按照谷歌官方给出的MVVM架构图设计的。  
-![](./img/mvvm.png)
+本框架是严格按照谷歌官方给出的MVVM架构图设计的。    
+![](./img/mvvm.png)  
 编写代码时应遵循以下原则：  
 - 通过网络、数据库返回的都是数据Flow，在repository中对数据进行相应的处理，最后流到ViewModel中。    
 - ViewModel通过collect或asLiveData对流进行收集处理
@@ -137,6 +137,10 @@ interface ArticleDataDao {
 - 3.默认只会观察最新的消息。
 
 建议不用过度使用全局事件，容易造成后期维护难的情况。（一条消息能被多个观察者消费，耦合严重）
+
+## 其他
+后续会慢慢完善该框架，欢迎学习交流。
+
 
 
 
