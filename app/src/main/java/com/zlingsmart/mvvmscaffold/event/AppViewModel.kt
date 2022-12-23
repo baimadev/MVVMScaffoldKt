@@ -1,5 +1,7 @@
 package com.zlingsmart.mvvmscaffold.event
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.kunminx.architecture.ui.callback.UnPeekLiveData
 import com.zlingsmart.base.viewmodel.BaseViewModel
 
@@ -8,6 +10,7 @@ import com.zlingsmart.base.viewmodel.BaseViewModel
  */
 class AppViewModel : BaseViewModel() {
 
-    //var userInfo = UnPeekLiveData.Builder<UserInfo>().setAllowNullValue(true).create()
+    var userInfo = UnPeekLiveData.Builder<String>().setAllowNullValue(true).create()
+
 
 }

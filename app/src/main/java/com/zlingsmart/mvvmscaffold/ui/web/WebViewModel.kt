@@ -16,7 +16,4 @@ class WebViewModel : BaseViewModel() {
 
     //文章的网络访问路径
     var url: String = ""
-
-    //需要收藏的类型 具体参数说明请看 CollectType 枚举类
-    var collectType = 0
 }

@@ -21,8 +21,8 @@ fun <VB : ViewBinding> AppCompatActivity.inflateBindingWithGeneric(layoutInflate
     }
 
 @JvmName("inflateWithGeneric")
-fun <VB : ViewBinding> Fragment.inflateBindingWithGeneric(layoutInflater: LayoutInflater, parent: ViewGroup?, attachToParent: Boolean): VB =
-    withGenericBindingClass<VB>(this) { clazz ->
+fun <VB : ViewBinding> Fragment.inflateBindingWithGeneric(layoutInflater: LayoutInflater, parent: ViewGroup?, attachToParent: Boolean, genericPos:Int = 1): VB =
+    withGenericBindingClass<VB>(this,genericPos) { clazz ->
         clazz.getMethod("inflate", LayoutInflater::class.java, ViewGroup::class.java, Boolean::class.java)
             .invoke(null, layoutInflater, parent, attachToParent) as VB
     }.also { binding ->
@@ -31,13 +31,13 @@ fun <VB : ViewBinding> Fragment.inflateBindingWithGeneric(layoutInflater: Layout
         }
     }
 
-private fun <VB : ViewBinding> withGenericBindingClass(any: Any, block: (Class<VB>) -> VB): VB {
+private fun <VB : ViewBinding> withGenericBindingClass(any: Any, genericPos:Int = 1,block: (Class<VB>) -> VB): VB {
     var genericSuperclass = any.javaClass.genericSuperclass
     var superclass = any.javaClass.superclass
     while (superclass != null) {
         if (genericSuperclass is ParameterizedType) {
                 try {
-                    return block.invoke(genericSuperclass.actualTypeArguments[1] as Class<VB>)
+                    return block.invoke(genericSuperclass.actualTypeArguments[genericPos] as Class<VB>)
                 } catch (e: NoSuchMethodException) {
                 } catch (e: ClassCastException) {
                 } catch (e: InvocationTargetException) {

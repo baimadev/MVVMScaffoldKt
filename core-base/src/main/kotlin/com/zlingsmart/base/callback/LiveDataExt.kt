@@ -5,6 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 
+/**
+ * 添加默认值
+ */
 class BooleanLiveData : MutableLiveData<Boolean>() {
 
     override fun getValue(): Boolean {

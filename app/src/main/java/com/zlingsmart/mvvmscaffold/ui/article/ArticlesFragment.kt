@@ -6,12 +6,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.zlingsmart.base.fragment.BaseVmDbFragment
 import com.zlingsmart.mvvmscaffold.R
+import com.zlingsmart.mvvmscaffold.appViewModel
 import com.zlingsmart.mvvmscaffold.databinding.FragmentArticlesBinding
 import com.zlingsmart.mvvmscaffold.util.init
 import com.zlingsmart.mvvmscaffold.util.nav
 import com.zlingsmart.mvvmscaffold.util.navigateAction
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.include_toolbar.*
+import timber.log.Timber
 
 @AndroidEntryPoint
 class ArticlesFragment : BaseVmDbFragment<ArticlesViewModel, FragmentArticlesBinding>() {
@@ -48,6 +50,12 @@ class ArticlesFragment : BaseVmDbFragment<ArticlesViewModel, FragmentArticlesBin
         mViewModel.articleInfoData.observe(this){
             adapter.submitList(it)
         }
+        appViewModel.userInfo.observeInFragment(this){
+            Timber.d(it)
+        }
+        appViewModel.userInfo.postValue("1")
+        appViewModel.userInfo.postValue("2")
+
     }
 
     override fun showLoading(isShow: Boolean) {

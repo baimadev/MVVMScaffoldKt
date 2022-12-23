@@ -16,7 +16,6 @@ interface NetworkService {
                          @Query("client_id") clientID : String= "Settings.CLIENT_ID",
                          @Query("client_secret") clientSecret : String= "Settings.CLIENT_SECRET"): BaseResponse<String>
 
-
     /**
      * 获取首页文章列表
      */
